@@ -76,9 +76,6 @@ public class TreeSerializerTest {
 		System.out.print("Expected: ");
 		printArray(serializedTree);
 		assertArrayEquals(serializedTree, values);
-
-		
-		
 	}
 	
 	

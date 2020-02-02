@@ -54,7 +54,6 @@ public class TreeSerializerTest {
 			return false;
 		
 		return testTrees(t1.right, t2.right) && testTrees(t1.left, t2.left);
-		
 	}
 	
 	

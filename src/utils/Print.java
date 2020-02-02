@@ -9,4 +9,5 @@ public class Print {
 			System.out.print(s);
 		}
 	}
+
 }

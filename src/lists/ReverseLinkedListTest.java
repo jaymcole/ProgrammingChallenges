@@ -16,7 +16,6 @@ import utils.PrintToString;
 public class ReverseLinkedListTest {
 	
 	private boolean TestSolution(int[] expected, Node actual) {
-//		System.out.println("Start test");
 		int index = 1;
 		if (actual == null)
 			return expected.length <= 0;
@@ -30,7 +29,6 @@ public class ReverseLinkedListTest {
 			if (!compareValue(actual, expected, index)) {
 				return false;
 			}
-//			System.out.println("Compared " + actual.value + " to " + expected[index]);
 			index++;
 			actual = actual.right;
 		}
@@ -39,12 +37,10 @@ public class ReverseLinkedListTest {
 	
 	private boolean compareValue(Node node, int[] answer, int index) {
 		if (node == null) {
-//			System.out.println("Node was null");
 			return false;
 		}
 		
 		if (index >= answer.length) {
-//			System.out.println("Index out of bounds");
 			return false;
 		}
 		
@@ -55,10 +51,8 @@ public class ReverseLinkedListTest {
 	private void printNode(Node head) {
 		
 		while (head != null) {
-//			System.out.print(head.value + " ");
 			head = head.right;
 		}
-//		System.out.println();
 		
 	}
 	
@@ -68,25 +62,19 @@ public static void printTree(Node node) {
 		
 		Node start = node;
 		if (node == null) {
-//			System.out.println("Tree was null");
 			return;
 		}
-//		System.out.print(start.value + " ");
 		
 		node = node.right;
 		while(node != null && node != start) {
 			
 			if (nodeMap.containsKey(node)) {
-//				System.out.println("List Contains a loop!");
-//				System.out.println(node.value +" points to " + node.right.value);
 				return;
 			}
 			nodeMap.put(node, 0);
-//			System.out.print(node.value + " ");
 			node = node.right;
 			
 		}
-//		System.out.println();
 	}
 
 
@@ -121,7 +109,7 @@ public static void printTree(Node node) {
 	private boolean Tester_Recursive(String testName, int[] expected, Node testTree, boolean logTest) {
 		Node actual = ReverseLinkedList.Reverse_recursive(testTree);
 		Print.PrintToConsole = logTest;
-		Print.PrintString("Test LinkedList_1_answer \n" );
+		Print.PrintString("Test "+testName+" \n" );
 		Print.PrintString("Expected: " + PrintToString.IntArrayToString(expected) + "\n");
 		Print.PrintString("  Actual: " + PrintToString.NodeListToString(actual) + "\n\n");
 		Print.PrintToConsole = false;
@@ -133,7 +121,7 @@ public static void printTree(Node node) {
 		Node actual = ReverseLinkedList.Reverse_Iterative(testTree);
 		
 		Print.PrintToConsole = logTest;
-		Print.PrintString("Test LinkedList_1_answer \n" );
+		Print.PrintString("Test "+testName+" \n" );
 		Print.PrintString("Expected: " + PrintToString.IntArrayToString(expected) + "\n");
 		Print.PrintString("  Actual: " + PrintToString.NodeListToString(actual) + "\n\n");
 		Print.PrintToConsole = false;

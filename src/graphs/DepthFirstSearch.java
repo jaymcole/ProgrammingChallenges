@@ -1,14 +1,14 @@
 package graphs;
 
 public class DepthFirstSearch {
-	public static int Search(Node start, Node end) {
+	public static int Search(NodeGraph start, NodeGraph end) {
 		if (start == end) {
 			return start.value;
 		}
 
 		int minCost = -1;
 		for(Edge edge : start.getEdges()) {
-			Node nextNode = edge.getNode();
+			NodeGraph nextNode = edge.getNode();
 			int travelCost = edge.getCost() + start.value;
 			
 			if (travelCost < nextNode.value || nextNode.value == -1) {

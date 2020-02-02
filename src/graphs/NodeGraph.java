@@ -2,12 +2,12 @@ package graphs;
 
 import java.util.LinkedList;
 
-public class Node {
+public class NodeGraph {
 	public String name = "Missing";
 	public int value;
 	private LinkedList<Edge> edges;
 	
-	public Node (int value) {
+	public NodeGraph (int value) {
 		edges = new LinkedList<Edge>();
 		this.value = value;
 	}
@@ -16,7 +16,7 @@ public class Node {
 		return edges;
 	}
 	
-	public void AddEdge(Node n, int cost) {
+	public void AddEdge(NodeGraph n, int cost) {
 		AddEdge(new Edge(n, cost));
 	}
 	

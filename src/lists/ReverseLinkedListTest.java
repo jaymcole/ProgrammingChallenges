@@ -9,26 +9,14 @@ import org.junit.jupiter.api.Test;
 
 import arrays.CountIslands;
 import trees.Node;
+import utils.Generate;
+import utils.Print;
+import utils.PrintToString;
 
 public class ReverseLinkedListTest {
-
-	
-	
-	private int[] LinkedList_1_answer = new int[] {
-			5,4,3,2,1
-	};
-	private Node LinkedList_1() {
-		Node head = new Node(1);
-		head.right = new Node(2);
-		head.right.right = new Node(3);
-		head.right.right.right = new Node(4);
-		head.right.right.right.right = new Node(5);
-		return head;
-	}
-	
 	
 	private boolean TestSolution(int[] expected, Node actual) {
-		System.out.println("Start test");
+//		System.out.println("Start test");
 		int index = 1;
 		if (actual == null)
 			return expected.length <= 0;
@@ -42,7 +30,7 @@ public class ReverseLinkedListTest {
 			if (!compareValue(actual, expected, index)) {
 				return false;
 			}
-			System.out.println("Compared " + actual.value + " to " + expected[index]);
+//			System.out.println("Compared " + actual.value + " to " + expected[index]);
 			index++;
 			actual = actual.right;
 		}
@@ -67,10 +55,10 @@ public class ReverseLinkedListTest {
 	private void printNode(Node head) {
 		
 		while (head != null) {
-			System.out.print(head.value + " ");
+//			System.out.print(head.value + " ");
 			head = head.right;
 		}
-		System.out.println();
+//		System.out.println();
 		
 	}
 	
@@ -80,36 +68,128 @@ public static void printTree(Node node) {
 		
 		Node start = node;
 		if (node == null) {
-			System.out.println("Tree was null");
+//			System.out.println("Tree was null");
 			return;
 		}
-		System.out.print(start.value + " ");
+//		System.out.print(start.value + " ");
 		
 		node = node.right;
 		while(node != null && node != start) {
 			
 			if (nodeMap.containsKey(node)) {
-				System.out.println("List Contains a loop!");
-				System.out.println(node.value +" points to " + node.right.value);
+//				System.out.println("List Contains a loop!");
+//				System.out.println(node.value +" points to " + node.right.value);
 				return;
 			}
 			nodeMap.put(node, 0);
-			System.out.print(node.value + " ");
+//			System.out.print(node.value + " ");
 			node = node.right;
 			
 		}
-		System.out.println();
+//		System.out.println();
+	}
+
+
+	private int[] LinkedList_1_answer = new int[] {
+			5,4,3,2,1
+	};
+	private Node LinkedList_1() {
+		Node head = new Node(1);
+		head.right = new Node(2);
+		head.right.right = new Node(3);
+		head.right.right.right = new Node(4);
+		head.right.right.right.right = new Node(5);
+		return head;
+	}
+	
+	private int[] LinkedList_2 = new int[] {1};
+	private int[] LinkedList_2_answer = new int[] {1};
+	
+	private int[] LinkedList_3 = new int[] {1,2};
+	private int[] LinkedList_3_answer = new int[] {2,1};
+	
+	private int[] LinkedList_4 = new int[] {};
+	private int[] LinkedList_4_answer = new int[] {};
+	
+	private int[] LinkedList_5 = new int[] {8,2,3,23,7,5,54,23,84,12,34};
+	private int[] LinkedList_5_answer = new int[] {34,12,84,23,54,5,7,23,3,2,8};
+	
+	
+	
+	
+	
+	private boolean Tester_Recursive(String testName, int[] expected, Node testTree, boolean logTest) {
+		Node actual = ReverseLinkedList.Reverse_recursive(testTree);
+		Print.PrintToConsole = logTest;
+		Print.PrintString("Test LinkedList_1_answer \n" );
+		Print.PrintString("Expected: " + PrintToString.IntArrayToString(expected) + "\n");
+		Print.PrintString("  Actual: " + PrintToString.NodeListToString(actual) + "\n\n");
+		Print.PrintToConsole = false;
+
+		return TestSolution(expected, actual);
+	}
+	
+	private boolean Tester_Iterative(String testName, int[] expected, Node testTree, boolean logTest) {
+		Node actual = ReverseLinkedList.Reverse_Iterative(testTree);
+		
+		Print.PrintToConsole = logTest;
+		Print.PrintString("Test LinkedList_1_answer \n" );
+		Print.PrintString("Expected: " + PrintToString.IntArrayToString(expected) + "\n");
+		Print.PrintString("  Actual: " + PrintToString.NodeListToString(actual) + "\n\n");
+		Print.PrintToConsole = false;
+
+		return TestSolution(expected, actual);
 	}
 	
 	@Test
-	void island_one() {
-		printTree(ReverseLinkedList.Reverse_recursive(LinkedList_1()));
-		assertTrue(TestSolution(LinkedList_1_answer, ReverseLinkedList.Reverse_recursive(LinkedList_1())));
+	void LinkedList_rec_1() {
+		assertTrue(Tester_Recursive("LinkedList_rec_1", LinkedList_1_answer, LinkedList_1(), false));
 	}
 	
+	@Test
+	void LinkedList_it_1() {
+		assertTrue(Tester_Iterative("LinkedList_it_1", LinkedList_1_answer, LinkedList_1(), false));
+	}
 	
+	@Test
+	void LinkedList_rec_2() {
+		assertTrue(Tester_Recursive("LinkedList_rec_2", LinkedList_2_answer, Generate.GenerateLinkedList(LinkedList_2), false));
+	}
 	
+	@Test
+	void LinkedList_it_2() {
+		assertTrue(Tester_Iterative("LinkedList_rec_2", LinkedList_2_answer, Generate.GenerateLinkedList(LinkedList_2), false));
+	}
 	
+	@Test
+	void LinkedList_rec_3() {
+		assertTrue(Tester_Recursive("LinkedList_rec_3", LinkedList_3_answer, Generate.GenerateLinkedList(LinkedList_3), true));
+	}
+	
+	@Test
+	void LinkedList_it_3() {
+		assertTrue(Tester_Iterative("LinkedList_rec_3", LinkedList_3_answer, Generate.GenerateLinkedList(LinkedList_3), true));
+	}
+	
+	@Test
+	void LinkedList_rec_4() {
+		assertTrue(Tester_Recursive("LinkedList_rec_4", LinkedList_4_answer, Generate.GenerateLinkedList(LinkedList_4), false));
+	}
+	
+	@Test
+	void LinkedList_it_4() {
+		assertTrue(Tester_Iterative("LinkedList_rec_4", LinkedList_4_answer, Generate.GenerateLinkedList(LinkedList_4), false));
+	}
+	
+	@Test
+	void LinkedList_rec_5() {
+		assertTrue(Tester_Recursive("LinkedList_rec_5", LinkedList_5_answer, Generate.GenerateLinkedList(LinkedList_5), false));
+	}
+	
+	@Test
+	void LinkedList_it_5() {
+		assertTrue(Tester_Iterative("LinkedList_rec_5", LinkedList_5_answer, Generate.GenerateLinkedList(LinkedList_5), false));
+	}
 	
 	
 	

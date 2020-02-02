@@ -15,10 +15,6 @@ public class CountIslands {
 				if (grid[row][col] == LAND) {
 					DFS(grid, row, col);
 					islands++;
-//					System.out.println("Row: " + row);
-//					System.out.println("Col: " + col);
-//					System.out.println("Value: " + grid[row][col]);
-//					System.out.println("islands: " + islands);
 				}
 				
 			}

@@ -2,15 +2,15 @@ package graphs;
 
 public class Edge {
 	
-	private Node node;
+	private NodeGraph node;
 	private int cost;
 	
-	public Edge(Node n, int cost) {
+	public Edge(NodeGraph n, int cost) {
 		node = n;
 		this.cost = cost;
 	}
 	
-	public Node getNode() {
+	public NodeGraph getNode() {
 		return node;
 	}
 	

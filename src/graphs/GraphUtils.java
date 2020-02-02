@@ -1,29 +1,29 @@
 package graphs;
 
 public class GraphUtils {
-	public static void AddEdges(Node n1, int cost, Node n2) {
+	public static void AddEdges(NodeGraph n1, int cost, NodeGraph n2) {
 		n1.AddEdge(new Edge(n2, cost));
 		n2.AddEdge(new Edge(n1, cost));
 	}
 	
-	public static Node[] GetGraph1() {
-		Node[] nodes = new Node[] {
-				new Node(-1), // 0
-				new Node(-1), // 1
-				new Node(-1), // 2
-				new Node(-1), // 3
-				new Node(-1), // 4
-				new Node(-1), // 5
-				new Node(-1), // 6
-				new Node(-1), // 7
-				new Node(-1), // 8
-				new Node(-1), // 9
-				new Node(-1), // 10
-				new Node(-1), // 11
-				new Node(-1), // 12
-				new Node(-1), // 13
-				new Node(-1), // 14
-				new Node(-1), // 15
+	public static NodeGraph[] GetGraph1() {
+		NodeGraph[] nodes = new NodeGraph[] {
+				new NodeGraph(-1), // 0
+				new NodeGraph(-1), // 1
+				new NodeGraph(-1), // 2
+				new NodeGraph(-1), // 3
+				new NodeGraph(-1), // 4
+				new NodeGraph(-1), // 5
+				new NodeGraph(-1), // 6
+				new NodeGraph(-1), // 7
+				new NodeGraph(-1), // 8
+				new NodeGraph(-1), // 9
+				new NodeGraph(-1), // 10
+				new NodeGraph(-1), // 11
+				new NodeGraph(-1), // 12
+				new NodeGraph(-1), // 13
+				new NodeGraph(-1), // 14
+				new NodeGraph(-1), // 15
 		};
 		
 		
@@ -57,7 +57,7 @@ public class GraphUtils {
 		return nodes;
 	}
 	
-	public static void printGraph(Node[] nodes) {
+	public static void printGraph(NodeGraph[] nodes) {
 		for(int i = 0; i < nodes.length; i++) {
 			System.out.println("Node #" + i + ": " + nodes[i].value);
 		}

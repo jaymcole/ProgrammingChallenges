@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 public class DepthFirstSearchTest {
 	
 	private void runTest(int start, int end, int ExpectedAnswer) {
-		Node[] nodes = GraphUtils.GetGraph1();
-		Node startNode  = nodes[start];
-		Node endNode = nodes[end];
+		NodeGraph[] nodes = GraphUtils.GetGraph1();
+		NodeGraph startNode  = nodes[start];
+		NodeGraph endNode = nodes[end];
 		startNode.value = 0;
 		int answer = DepthFirstSearch.Search(startNode, endNode);
 		GraphUtils.printGraph(nodes);		

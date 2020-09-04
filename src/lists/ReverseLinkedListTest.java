@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
-import arrays.CountIslands;
+import leetcode_Medium.CountIslands;
 import trees.Node;
 import utils.Generate;
 import utils.Print;
